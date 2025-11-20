@@ -18,7 +18,7 @@ public class MonitorMapa extends Thread {
                     }   
                     System.out.println(); 
                 }
-                sleep(1000);
+                sleep(500);
  
             } catch(InterruptedException e){
                 System.out.println("Interrupcion");

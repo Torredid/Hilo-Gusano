@@ -25,7 +25,7 @@ public class HiloJardinero extends Thread {
                 }
             }
         }
-        System.out.println("Jardinero: Limpie el jardin.");
+       
     }
 
     @Override
@@ -43,7 +43,7 @@ public class HiloJardinero extends Thread {
                     limpiar();
                 }
                 // Descansamos un poco para no saturar
-                sleep(2000);
+                sleep(1000);
             }
             catch(InterruptedException e){
                 System.out.println("Interrupcion Jardinero");
