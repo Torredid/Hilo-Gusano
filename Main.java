@@ -12,8 +12,10 @@ public class Main
 		}
 		HiloGusano gus = new HiloGusano(mapa);
 		MonitorMapa monitor = new MonitorMapa(mapa);
+		HiloJardinero jardinero = new HiloJardinero(mapa);
 		System.out.println("Iniciando simulación.");
 		gus.start();
+		jardinero.start();
 		monitor.start();
 
 	}
