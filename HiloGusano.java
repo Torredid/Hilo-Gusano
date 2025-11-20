@@ -45,6 +45,7 @@ public class HiloGusano extends Thread {
         try{
             synchronized(jardin){
                 comerRenglon(ini, 3);
+                jardin.notify();
                 ini++;
             }
             ini--;
@@ -63,4 +64,3 @@ public class HiloGusano extends Thread {
     
 }
 
-(HOla)
