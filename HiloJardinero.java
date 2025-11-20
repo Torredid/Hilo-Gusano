@@ -17,7 +17,6 @@ public class HiloJardinero extends Thread {
         return false;
     }
     
-    // Metodo para restaurar la tierra
     private void limpiar(){
         for(int r=0; r<jardin.length; r++){
             for(int c=0; c<jardin[0].length; c++){
