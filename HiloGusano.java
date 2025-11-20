@@ -1,4 +1,4 @@
-
+import java.util.Random;
 public class HiloGusano extends Thread {
     private char[][] jardin;
     private int filas;
@@ -39,28 +39,38 @@ public class HiloGusano extends Thread {
     
     @Override
     public void run(){
-        int vida=99;
-        int ini=0;
-        while(vida>0)
-        try{
-            synchronized(jardin){
-                comerRenglon(ini, 3);
-                jardin.notify();
-                ini++;
+        Random random = new Random();
+        int vida=500;
+
+         while(vida > 0){
+            try{
+                synchronized(jardin){
+                    int r = random.nextInt(filas); 
+                    int c = random.nextInt(columnas);
+                    int accion = random.nextInt(2); 
+                    if(accion == 0){
+                        int cuantoCome = random.nextInt(4) + 2;
+                        if(random.nextBoolean()) 
+                            comerRenglon(r, cuantoCome);
+                        else 
+                            comerColumna(c, cuantoCome);
+                    } else {
+                        if(random.nextBoolean())
+                            caminaRenglon(r);
+                        else
+                            caminaColumna(c);
+                    }
+                    jardin.notify(); 
+                }               
+                sleep(200); 
+                vida--;
             }
-            ini--;
-            sleep(500);
-            vida--;
+            catch(InterruptedException e){
+                System.out.println("Interrupcion Gusano");
+            }
+            catch(ArrayIndexOutOfBoundsException e){
+            }
         }
-        catch(InterruptedException e){
-            System.out.println("Interrupcion");
-        }
-        catch(ArrayIndexOutOfBoundsException e){
-            ini=0;
-        }
-        
-        
     }
-    
 }
 
